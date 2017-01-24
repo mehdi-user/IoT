@@ -23,6 +23,4 @@ mvn exec:java -Dexec.mainClass=com.example.user.mqtt.Main
 
 ---------
 
-Adopted from:
-
-   [www.hascode.com]:http://www.hascode.com/2016/06/playing-around-with-mqtt-and-java-with-moquette-and-eclipse-paho/
+Adopted from: [www.hascode.com](http://www.hascode.com/2016/06/playing-around-with-mqtt-and-java-with-moquette-and-eclipse-paho/)
