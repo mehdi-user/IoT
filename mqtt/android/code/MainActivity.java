@@ -31,28 +31,35 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
 
+							
+				new Thread() {			
+					public void run() {
 
-                try {
-                    client = new MqttClient(BROKER_URL, MqttClient.generateClientId(), new MemoryPersistence());
 
-                    client.connect();
+						try {
+							client = new MqttClient(BROKER_URL, MqttClient.generateClientId(), new MemoryPersistence());
 
-                    MqttTopic myTopic = client.getTopic(TOPIC_NAME);
+							client.connect();
 
-                    int myValue = 75;
+							MqttTopic myTopic = client.getTopic(TOPIC_NAME);
 
-                    MqttMessage message = new MqttMessage(String.valueOf(myValue).getBytes());
+							int myValue = 75;
 
-                    myTopic.publish(message);
+							MqttMessage message = new MqttMessage(String.valueOf(myValue).getBytes());
 
-                    System.out.println("Submission Successful. Topic: " + myTopic.getName() + "  Message: " + myValue);
+							myTopic.publish(message);
 
-                    client.disconnect();
+							System.out.println("Submission Successful. Topic: " + myTopic.getName() + "  Message: " + myValue);
 
-                } catch (MqttException e) {
-                    e.printStackTrace();
-                }
+							client.disconnect();
 
+						} catch (MqttException e) {
+							e.printStackTrace();
+						}
+						
+					}.start();
+				
+				}
 
             }
 
